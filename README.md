@@ -49,3 +49,26 @@ val generateDoubleNumber = generateNumber forwardCompose doubleNumber
 
 println(generateDoubleNumber()) // Prints "84".
 ```
+
+### functional-monads
+#### Maybe<T>
+Let's start with the `Maybe<T>` monad :
+
+```
+data class Capital(val country: String, val name: String)
+
+val response: Maybe<List<Capital>> = emptyMaybe() // For example, might be a web API callback.
+
+val message = response.map { it.singleOrNull { it.country == "Switzerland" } }
+	.flatMap { it.toMaybe() }
+	.fold({ (_, name) -> "Found the capital of Switzerland : $name." },
+			{ "No capital found for Switzerland." })
+        
+println(message) // Prints "No capital found for Switzerland."
+```
+
+As you can see in the previous example, multiple operators are provided for the `Maybe<T>` type. The functions `map`
+and `flatMap` are present, as well as a `fold`function to accumulate the result of the `Maybe<T>`. You'll also notice
+that a convenience `toMaybe()` extension function can be used to transform any instance to a `Maybe<T>`.
+
+You can always create some `Maybe<T>` by using the `maybeOf<T>(...)` and `emtpyMaybe<T>()` functions.
