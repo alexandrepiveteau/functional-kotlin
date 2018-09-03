@@ -3,7 +3,7 @@
 [![](https://jitpack.io/v/alexandrepiveteau/functional-kotlin.svg)](https://jitpack.io/#alexandrepiveteau/functional-kotlin)
 
 This repository contains some utilies for functional programming in the Kotlin programming language.
-The OSS license can be found in the LICENSE.md file of the repository.
+The OSS license can be found in the [LICENSE.md](LICENSE) file of the repository.
 
 ## Installation
 This library is available on [JitPack.io](https://jitpack.io/#alexandrepiveteau/functional-kotlin). Make
