@@ -54,7 +54,7 @@ println(generateDoubleNumber()) // Prints "84".
 #### Maybe<T>
 Let's start with the `Maybe<T>` monad :
 
-```
+```kotlin
 data class Capital(val country: String, val name: String)
 
 val response: Maybe<List<Capital>> = emptyMaybe() // For example, might be a web API callback.
