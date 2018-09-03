@@ -26,3 +26,26 @@ dependencies {
 	implementation "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
 }
 ```
+
+## Usage
+The library contains the following modules :
+
+- **functional-composition** - Offers some infix operators for function composition.
+- **functional-monads** - Offers some implementations for the `Maybe<T>`, `Either<E, V>` and `Reader<C, R>` monads.
+
+### functional-composition
+
+The library offers the `compose`, `andThen` and `forwardCompose` operators, as well as a handy `..` syntax for function composition.
+The functions `compose` and `..` have the same effect. The functions `andThen` and `forwardCompose` have the same effect as well, and
+do composition in the opposite direction as `compose`/`..`.
+
+The infix operators are quite straightforward to use :
+
+```kotlin
+val generateNumber : () -> Int = { 42 }
+val doubleNumber: (Int) -> Int = { it * 2 }
+
+val generateDoubleNumber = generateNumber forwardCompose doubleNumber
+
+println(generateDoubleNumber()) // Prints "84".
+```
