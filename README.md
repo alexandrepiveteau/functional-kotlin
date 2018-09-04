@@ -9,7 +9,7 @@ The OSS license can be found in the [LICENSE.md](LICENSE.md) file of the reposit
 This library is available on [JitPack.io](https://jitpack.io/#alexandrepiveteau/functional-kotlin). Make
 sure to add the following Maven repository in your root **build.gradle** file :
 
-```
+```groovy
 allprojects {
 	repositories {
 			...
@@ -20,7 +20,7 @@ allprojects {
 
 You can now add the library modules in your application **build.gradle** file :
 
-```
+```groovy
 dependencies {
 	implementation "com.github.alexandrepiveteau.functional-kotlin:functional-composition:0.1.0"
 	implementation "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
