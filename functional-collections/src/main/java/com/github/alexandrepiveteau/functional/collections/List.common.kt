@@ -22,7 +22,29 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':functional-collections'
-include ':functional-composition'
-include ':functional-monads'
+package com.github.alexandrepiveteau.functional.collections
+
+import com.github.alexandrepiveteau.functional.monads.Maybe
+import com.github.alexandrepiveteau.functional.monads.toMaybe
+
+/**
+ * Returns the first element of a [List] in a [Maybe], or, if the [List] is empty, returns an empty
+ * instance of [Maybe].
+ */
+fun <T> List<T>.head(): Maybe<T> = firstOrNull().toMaybe()
+
+/**
+ * Returns the [List], without the first element. If the [List] is empty, it will still return an
+ * empty [List].
+ */
+fun <T> List<T>.tail(): List<T> = drop(1)
+
+/**
+ * Decomposes the [List] into its [head] component.
+ */
+operator fun <T> List<T>.component1(): Maybe<T> = head()
+
+/**
+ * Decomposes the [List] into its [tail] component.
+ */
+operator fun <T> List<T>.component2(): List<T> = tail()
