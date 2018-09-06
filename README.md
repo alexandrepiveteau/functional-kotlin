@@ -22,14 +22,16 @@ You can now add the library modules in your application **build.gradle** file :
 
 ```
 dependencies {
-	implementation "com.github.alexandrepiveteau.functional-kotlin:functional-composition:0.1.0"
-	implementation "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.1.0"
+	implementation "com.github.alexandrepiveteau.functional-kotlin:functional-collections:0.2.0"
+	implementation "com.github.alexandrepiveteau.functional-kotlin:functional-composition:0.2.0"
+	implementation "com.github.alexandrepiveteau.functional-kotlin:functional-monads:0.2.0"
 }
 ```
 
 ## Usage
 The library contains the following modules :
 
+- **functional-collections** - Offers some utilities for working with collections in a functional manner.
 - **functional-composition** - Offers some infix operators for function composition.
 - **functional-monads** - Offers some implementations for the `Maybe<T>`, `Either<E, V>` and `Reader<C, R>` monads.
 
