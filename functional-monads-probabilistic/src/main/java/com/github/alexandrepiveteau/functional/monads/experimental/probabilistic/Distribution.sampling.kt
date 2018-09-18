@@ -22,8 +22,14 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':functional-collections'
-include ':functional-composition'
-include ':functional-monads'
-include ':functional-monads-probabilistic'
+package com.github.alexandrepiveteau.functional.monads.experimental.probabilistic
+
+fun <K, O> Distribution<O>.bucketed(iterations: Int, f: (O) -> K): Map<K, List<O>> {
+    val map = mutableMapOf<K, MutableList<O>>()
+    for (i in 0..iterations) {
+        val sample = this.sample()
+        val list = map[f(sample)] ?: mutableListOf()
+        list += sample
+    }
+    return map
+}

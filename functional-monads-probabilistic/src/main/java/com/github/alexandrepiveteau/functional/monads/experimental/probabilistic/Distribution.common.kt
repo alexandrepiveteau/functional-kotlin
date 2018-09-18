@@ -22,8 +22,19 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':functional-collections'
-include ':functional-composition'
-include ':functional-monads'
-include ':functional-monads-probabilistic'
+package com.github.alexandrepiveteau.functional.monads.experimental.probabilistic
+
+fun <O1, O2> Distribution<O1>.map(f: (O1) -> O2): Distribution<O2> =
+        Distribution { f(this.sample()) }
+
+fun <O1, O2> Distribution<O1>.flatMap(f: (O1) -> Distribution<O2>): Distribution<O2> =
+        f(this.sample())
+
+fun <O1, O2> Distribution<O1>.zip2(a: Distribution<O2>): Distribution<Pair<O1, O2>> =
+        flatMap { o1 -> a.map { o2 -> o1 to o2 } }
+
+fun <O1, O2, O3> Distribution<O1>.zip3(a: Distribution<O2>, b: Distribution<O3>): Distribution<Triple<O1, O2, O3>> =
+        flatMap { o1 -> a.flatMap { o2 -> b.map { o3 -> Triple(o1, o2, o3) } } }
+
+fun <O: Any> Distribution<O>.toSequence(): Sequence<O> =
+        generateSequence { sample() }

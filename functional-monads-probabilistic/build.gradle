@@ -22,8 +22,16 @@
  * SOFTWARE.
  */
 
-include ':app'
-include ':functional-collections'
-include ':functional-composition'
-include ':functional-monads'
-include ':functional-monads-probabilistic'
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.alexandrepiveteau'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.30"
+    api project(':functional-monads')
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
